@@ -1,19 +1,19 @@
 # To set the environment variable on heroku use: 
 # heroku config:add DBURL=mongodb://user:pass@host:port/database
 
-exports.dbUrl = process.env['MONGOHQ_URL'] # OR 'mongodb://user:pass@host:port/database'
-exports.blog_title = 'Guilherme Defreitas'
-exports.blog_description = 'Guilherme Defreitas Blog'
-exports.feed_url = 'http://guidefreitas.com/rss.xml'
-exports.site_url = 'http://guidefreitas.com'
-exports.site_image_url = 'http://guidefreitas.com/icon.png'
-exports.site_author = 'Guilherme Defreitas Juraszek'
+exports.dbUrl =  'mongodb://localhost:27017/blog.doublerebel'
+exports.blog_title = 'I fix things.'
+exports.blog_description = 'Blog of Charles Phillips'
+exports.feed_url = 'http://blog.doublerebel.com/rss.xml'
+exports.site_url = 'http://blog.doublerebel.com'
+exports.site_image_url = 'http://blog.doublerebel.com/icon.png'
+exports.site_author = 'Charles Phillips'
 
-exports.author_email = 'guilherme.defreitas@gmail.com'
-exports.author_facebook_url = 'https://www.facebook.com/guidefreitas'
-exports.author_twitter_url = 'http://twitter.com/guidef'
-exports.author_linkedin_url = 'http://www.linkedin.com/pub/guilherme-defreitas-juraszek/24/331/2a3'
-exports.author_github_url = 'https://github.com/guidefreitas'
-exports.author_skype_url = 'callto://guilherme.defreitas'
+exports.author_email = 'charles@doublerebel.com'
+exports.author_facebook_url = ''
+exports.author_twitter_url = 'http://twitter.com/doublerebel'
+exports.author_linkedin_url = 'http://www.linkedin.com/in/doublerebel'
+exports.author_github_url = 'https://github.com/doublerebel'
+exports.author_skype_url = 'callto://doublerebel'
 
 exports.crypto_key = 'e981739hdkdfasdfknasdfiu9823oa0sdf9023o4f'
