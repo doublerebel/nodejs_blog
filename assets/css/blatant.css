@@ -712,3 +712,5 @@ ul#author_meta li.subscribe span:hover a {
         page-break-after: avoid;
     }
 }
+
+a#search-button { position: absolute; right: 3em; top: 3em; }
