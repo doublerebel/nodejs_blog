@@ -21,33 +21,10 @@ header#leftbar
           a(href='http://feeds.feedburner.com/doublerebel') feed
 
   ul.menu
-    - if(req.url == "/" || req.url == "/search" )
-      li.selected 
-        a(href='/')!= __('Blog') 
-    - else
-      li 
-        a(href='/')!= __('Blog') 
-    
-    - if(req.url == "/projects")
-      li.selected 
-        a(href='/projects')!= __('Projects')
-    - else
-      li
-        a(href='/projects')!= __('Projects')
-    
-    - if(req.url == "/about")
-      li.selected 
-        a(href='/about')!= __('About')
-    - else
-      li 
-        a(href='/about')!= __('About')
     li
       a#search-button(href="#") 
         | <span class="icon">z</span>
-    li
-      a(href="http://feeds.feedburner.com/guidefreitas/RTlL") 
-        | <span class="icon">Æ</span>
-
+    
   header
     !=partial('search_field')
   
