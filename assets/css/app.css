@@ -7,14 +7,6 @@
     color: #FFFFFF;
 }
 
-.site-header {
-  margin: 54px 0 30px;
-  border-bottom: solid 1px white;
-  padding-bottom: 15px
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
- 
-}
-
 .site-header ul.menu{
   padding-top: 8px;
   vertical-align: left;
