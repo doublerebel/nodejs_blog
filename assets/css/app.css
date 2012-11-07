@@ -1,3 +1,24 @@
+@font-face {font-family:
+    'RaphaelIcons';
+    src:
+    url('/css/raphaelicons/raphaelicons-webfont.eot');
+    src:
+    local('☺'), url('/css/raphaelicons/raphaelicons-webfont.woff') format('woff'), url('/css/raphaelicons/raphaelicons-webfont.ttf') format('truetype'), url('/css/raphaelicons/raphaelicons-webfont.svgwebfontKOf9F4sx') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    font-family: 'RaphaelIcons';
+    font-size: 1.1em;
+    position: relative;
+    top: 0.1em;
+}
+
+
 #search-form{
   width: 180px;
   margin: auto;
