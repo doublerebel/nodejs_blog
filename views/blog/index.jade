@@ -4,6 +4,12 @@ section#river
     small November
     | &nbsp;06, 2012
 
+  a#search-button(href="#") 
+    | <span class="icon">z</span>  
+  
+  !=partial('search_field')
+  
+
   - if (posts.length == 0)
     article.post
       p Nenhum post encontrado
