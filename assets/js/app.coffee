@@ -1,12 +1,10 @@
 $ ->
 
 	$('#search-button').click ->
-		$('#search-form').slideDown 'fast',  ->
-			$('#search-field').focus
+		$('#search-form').slideDown 'fast',  -> $('#search-field').focus()
 	
 	$('#search-field').blur ->
-		if $(this).val is ""
-			$('#search-form').slideUp 'fast',  ->
+		if $(this).val is "" then $('#search-form').slideUp 'fast'
 				
 	$('.contact-form').submit (e) ->
 		
