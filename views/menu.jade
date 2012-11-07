@@ -1,32 +1,50 @@
-header.site-header
-	a.site-logo(href='/') Guilherme Defreitas
-	ul.menu
-		
-		- if(req.url == "/" || req.url == "/search" )
-			li.selected 
-				a(href='/')!= __('Blog') 
-		- else
-			li 
-				a(href='/')!= __('Blog') 
-		
-		- if(req.url == "/projects")
-			li.selected 
-				a(href='/projects')!= __('Projects')
-		- else
-			li
-				a(href='/projects')!= __('Projects')
-		
-		- if(req.url == "/about")
-			li.selected 
-				a(href='/about')!= __('About')
-		- else
-			li 
-				a(href='/about')!= __('About')
-		li
-			a#search-button(href="#") 
-				| <span class="icon">z</span>
-		li
-			a(href="http://feeds.feedburner.com/guidefreitas/RTlL") 
-				| <span class="icon">Æ</span>
+header#leftbar.site-header
+  div.clearfix.container
+    aside#logo.cube
+      div.back
+      div.front
+        a.site-logo(href='/') doublerebel
+  ul#author_meta
+    li.blog_name
+        h1
+          a(href='http://blog.doublerebel.com') doublerebel
+      li.author_name
+        h2
+          a(href='http://blog.doublerebel.com') Charles Phillips
+      li.tagline
+        h2 I fix things.
+      li.subscribe.twitter
+        span
+          a(href='http://twitter.com/doublerebel') @doublerebel
+      li.subscribe.feed
+        span
+          a(href='http://feeds.feedburner.com/doublerebel') feed
 
-				
+  ul.menu
+    - if(req.url == "/" || req.url == "/search" )
+      li.selected 
+        a(href='/')!= __('Blog') 
+    - else
+      li 
+        a(href='/')!= __('Blog') 
+    
+    - if(req.url == "/projects")
+      li.selected 
+        a(href='/projects')!= __('Projects')
+    - else
+      li
+        a(href='/projects')!= __('Projects')
+    
+    - if(req.url == "/about")
+      li.selected 
+        a(href='/about')!= __('About')
+    - else
+      li 
+        a(href='/about')!= __('About')
+    li
+      a#search-button(href="#") 
+        | <span class="icon">z</span>
+    li
+      a(href="http://feeds.feedburner.com/guidefreitas/RTlL") 
+        | <span class="icon">Æ</span>
+

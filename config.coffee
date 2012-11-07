@@ -1,7 +1,7 @@
 # To set the environment variable on heroku use: 
 # heroku config:add DBURL=mongodb://user:pass@host:port/database
 
-exports.dbUrl =  'mongodb://localhost:27017/blog.doublerebel'
+exports.dbUrl =  'mongodb://localhost:27017/blog'
 exports.blog_title = 'I fix things.'
 exports.blog_description = 'Blog of Charles Phillips'
 exports.feed_url = 'http://blog.doublerebel.com/rss.xml'

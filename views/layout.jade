@@ -1,24 +1,25 @@
 !!! 5
 html(lang="en")
-	head
-		title =pageTitle
-		meta(charset='UTF-8')
-		meta(name="apple-mobile-web-app-capable", content="yes")
-		meta(http-equiv="X-UA-Compatible", content="chrome=1")
-		!= css('app')
-		!= css('raphaelicons')
-		!= css('http://releases.flowplayer.org/5.0.0/skin/minimalist.css')
-		!= js('jquery-1.7.2.min')
-		!= js('underscore-min')
-		!= js('http://releases.flowplayer.org/5.0.0/flowplayer.min.js')
-		!= js('app')
+  head
+    meta(charset='UTF-8')
+    title =pageTitle
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(http-equiv="X-UA-Compatible", content="chrome=1")
+    meta(name="description", content="Blog of Charles Phillips, full-stack JavaScript developer.  I fix things.")
+    link(href='http://fonts.googleapis.com/css?family=Arvo:400,700',rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Raleway:200,400,500,600,800,900', rel='stylesheet', type='text/css')
+    != css('raphaelicons')
+    != css('app')
+    != css('blatant')
+    != css('http://releases.flowplayer.org/5.0.0/skin/minimalist.css')
+    != js('jquery-1.7.2.min')
+    != js('underscore-min')
+    != js('http://releases.flowplayer.org/5.0.0/flowplayer.min.js')
+    != js('app')
 
-	body.site-page
-		img#canvasSource(src='/img/bg2.jpg', witdh="300", height="200")
-		canvas.blur#bgcanvas
-		div.wrapper
-			!=partial('menu')
-			!= body
-			!=partial('analytics')
+  body.site-page
+    !=partial('menu')
+    !=body
+    !=partial('analytics')
 
-		
+        
