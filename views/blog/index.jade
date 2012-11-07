@@ -5,11 +5,11 @@ section
     | 06, 2012
 
 - if (posts.length == 0)
-  article.post.content
+  article.post
     p Nenhum post encontrado
 - else
   - each post in posts
-    article.post.content(id=post.urlid)
+    article.post(id=post.urlid)
     header
       h2
         a.title(href='/'+post.urlid)!= post.title
