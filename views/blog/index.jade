@@ -1,31 +1,45 @@
-article#blog-main-page.blog
-	header
-		!=partial('search_field')
-	
-	div.main_posts
-		- if (posts.length == 0)
-			div.content
-				p Nenhum post encontrado
-		- else
-			- each post in posts
-				div.content
-					section.post
-						h2 
-							a(href='/'+post.urlid)!= post.title
-						p.meta
-							!= moment(post.date).format('LL')
-							
-						!= partial('post_tags', {post : post})
+section
+  header#headwaters
+   time
+    small November
+    | 06, 2012
 
-						p!= md.parse(post.body)
-			
-			- if (posts.length == 10)
-				div.nav_botton
-					div.old_posts_nav_link
-						a(href='/page/' + ( (!req.params.id) ? 2 : (parseInt(req.params.id) + 1) ))
-							img.icon(src='/img/back.png') 
-							span.label!= __('Old Posts')
+- if (posts.length == 0)
+  article.post.content
+    p Nenhum post encontrado
+- else
+  - each post in posts
+    article.post.content(id=post.urlid)
+    header
+      h2
+        a.title(href='/'+post.urlid)!= post.title
+      p.meta
+        != moment(post.date).format('LL')
+      p
+        != md.parse(post.body)
+      p
+        | Bacon ipsum dolor sit amet beef ribs doner bacon pig
+        a(href='http://google.com') filet mignon
+        | fatback boudin capicola t-bone tri-tip swine ham. Fatback spare ribs tongue, short ribs rump ribeye strip steak filet mignon turkey flank beef ribs brisket. T-bone kielbasa ham hock, pork loin beef ribs venison flank pastrami brisket turducken pig ball tip. Spare ribs t-bone brisket shankle strip steak. Boudin turducken fatback, andouille salami tongue kielbasa shoulder pancetta.
+        blockquote
+        p
+          | Turducken kielbasa bresaola, chuck pork loin ham swine biltong pancetta. Meatball bresaola rump ham hock short loin spare ribs beef ribs salami jerky strip steak. Ground round pork chop ham fatback beef pork cow turkey pork belly strip steak ball tip brisket pig prosciutto.
+        p
+          | Shoulder t-bone short loin brisket sirloin sausage, shankle tri-tip ground round venison chuck. Strip steak short ribs meatloaf ball tip, swine flank capicola. Bacon short loin leberkas, spare ribs andouille turkey kielbasa tri-tip shankle sausage.
+        hr
+        p
+          | Kielbasa meatball pork chop beef ribs, shank short ribs filet mignon strip steak salami short loin. Pancetta chicken fatback, ball tip meatball rump short loin corned beef short ribs sausage ham biltong. Pastrami beef ribs sirloin tri-tip cow meatball turkey, pork pork chop swine corned beef pork loin. Fatback ball tip swine meatloaf flank beef. Biltong brisket drumstick, capicola fatback turducken ribeye tenderloin bresaola ball tip meatball spare ribs. Bresaola andouille boudin biltong kielbasa ground round shank. Salami ball tip pork belly cow strip steak sausage filet mignon, jerky ham short ribs short loin tongue.
+          
+        != partial('post_tags', {post : post})
 
-									
-								
-									
+  
+  - if (posts.length == 10)
+    div.nav_botton
+      div.old_posts_nav_link
+        a(href='/page/' + ( (!req.params.id) ? 2 : (parseInt(req.params.id) + 1) ))
+          img.icon(src='/img/back.png') 
+          span.label!= __('Old Posts')
+
+                  
+                
+                  
