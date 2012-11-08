@@ -464,7 +464,7 @@ footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 2
     article iframe,article object { min-height: 250px; min-width: 0; }
   
     header#headwaters { border-top: 1px solid #4A4A4A; padding: 1.6em 0; color: #e0e0e0; text-align: center; position: relative; }
-    header#headwaters a#search-button { position: absolute; right: 0.95em; bottom: 0.5em; color: #555; }
+    header#headwaters a#search-button { position: absolute; right: 0.95em; top: auto; bottom: 0.5em; color: #555; }
     a#search-button:hover, a#search-button:active { color: #e0e0e0; }
     header#headwaters #search-form { position: relative; right: auto; top: auto; margin: 0.6em auto 0; }
     
