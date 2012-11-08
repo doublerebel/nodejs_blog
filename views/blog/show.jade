@@ -1,14 +1,12 @@
-article.blog
-	header
-		!=partial('search_field')
-			
-	div.content
-		section.post
-			h2= post.title
-			p.meta
-				!= moment(post.date).format('LL')
-				a.author(href='/sobre')
-					img(src='/img/about/gui.png', width='68', height='68')
-			!= partial('post_tags', {post : post})
-			p!= md.parse(post.body)
+section#river
+  div.content
+    article.post
+      header
+        h2= post.title
+      p.meta
+        != moment(post.date).format('LL')
+        //- a.author(href='/sobre')
+        //-   img(src='/img/about/gui.png', width='68', height='68')
+      != partial('post_tags', {post : post})
+      p!= md.parse(post.body)
 
