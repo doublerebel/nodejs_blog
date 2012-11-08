@@ -335,7 +335,7 @@ article#about #search-form{
 }
 
 .post ul.tags li a{
-  color: #343131;
+  /*color: #343131;
   display: block;
   background: url(/images/tag.png) no-repeat 5px center;
   font-size: 0.8em;
@@ -349,7 +349,7 @@ article#about #search-form{
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
-  border-radius: 2px;
+  border-radius: 2px;*/
 }
 
 .post ul.tags li:hover{

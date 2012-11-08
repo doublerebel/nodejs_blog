@@ -417,11 +417,13 @@ section#river { margin-left: 27%; min-width: 658px; position: relative; z-index:
   article.post h2, article.post p { max-width: 500px; }
   article.post time { display: none; }
   article.post blockquote p { max-width: none; }
+  article.post ul.tags { display: none }
   
   article h2 a:link,article h2 a:hover, article h2 a:visited, article h2 a:active { font: 700 1.25em/1.6em "Arvo",serif; -webkit-font-smoothing: antialiased; }
   article a:link, article a:visited, article a:hover, article a:active { color: white; }
   article a:hover, article a:active { border-bottom: 1px solid #ccc; }
   article h2 a:hover { border: none; }
+
 
 footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 240px; padding-left: 1.5%; }
   #doublerebel_com { position: relative; margin-left: 1.25em; bottom: 2em; letter-spacing: 0; font: 900 0.95em/0.95em "Raleway",sans-serif; background-color: rgba(220, 220, 220, 0.07); background-color: rgba(220, 220, 220, 0.0); padding: 10px 0; z-index: 9002; height: 26px; }
