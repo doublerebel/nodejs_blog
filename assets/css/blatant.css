@@ -491,7 +491,6 @@ body.admin section textarea, body.admin section input[type=text] { background: t
 #new-post-form #text { font-size: 0.95em; line-height: 1.6em; }
 #new-post-form #title-field { color: white; }
 #new-post-form #tags-field { color: #787878; }
-body.admin section input[type="submit"] { margin-bottom: 7em; }
 
 body.admin section li {
   background-color: #24201B;
