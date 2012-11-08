@@ -455,7 +455,7 @@ article#login fieldset p { padding-left: 0; }
   header#leftbar { display: block; position: relative; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; }
     aside#logo { position: relative; margin: 1.25em auto 0; }
 
-    ul#author_meta { position: relative; left: 130px; top: -130px; margin-bottom: -130px; max-width: 320px; }
+    ul#author_meta { position: relative; left: 130px; top: -130px; margin-bottom: -130px; max-width: 320px; width: 50%; }
     ul#author_meta li.tagline h2 { margin: 1.6em 0 0; }
     ul#author_meta li.subscribe { position: relative; left: -130px; }
     ul#author_meta li.feed { }
