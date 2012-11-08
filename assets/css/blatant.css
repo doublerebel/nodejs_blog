@@ -434,7 +434,7 @@ footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 2
 
 
 /* Admin */
-article#login { padding-top: 2em; border-top: 1px solid #4A4A4A; }
+article#login { padding-top: 2em; border-left: 1px solid #4A4A4A; }
 article#login fieldset p { padding-left: 0; }
 
 
@@ -489,6 +489,8 @@ article#login fieldset p { padding-left: 0; }
   footer#createdby { position: absolute; top: 248px; text-align: right; right: 20px; left: auto; }
     footer #doublerebel_com { top: -40px; right: 0px; left: auto; position: absolute; }
     footer #doublerebel_com span.logo { display: none; }
+
+  article#login { margin-top: 0.95em; border-top: 1px solid #4A4A4A; }
 }
 
 @media all and (min-width:630px) and (max-width:1024px) {
