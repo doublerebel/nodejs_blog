@@ -475,8 +475,8 @@ body.admin section li:hover { margin-left: -16px; background-color: white; -webk
 body.admin section li h2 { color: inherit!important; }
 body.admin section li a { color: inherit!important; }
 
-body.admin footer.createdby { z-index: 200; }
-body.admin footer.createdby div.content { bottom: 200px; position: relative; left: 1.2em; }
+body.admin footer#createdby { z-index: 200; }
+body.admin footer#createdby div.content { bottom: 200px; position: relative; left: 1.2em; }
 
 
 body.admin section li {
