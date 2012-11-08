@@ -477,6 +477,7 @@ body.admin section li a { color: inherit!important; }
 
 body.admin footer#createdby { z-index: 200; }
 body.admin footer#createdby div.content { bottom: 200px; position: relative; left: 1.2em; }
+body.admin footer#createdby button { margin: 0; color: black; }
 
 
 body.admin section li {
