@@ -507,13 +507,13 @@ body.admin section li {
 @media all and (max-width:330px) {
   ul#author_meta li.blog_name h1 { margin-bottom: 0.8em; }
   ul#author_meta li.blog_name h1 a { font-size: 1.1em; }
-  body.admin button { margin: 14px 0 0 4px; }
 }
 
 @media all and (max-width:630px) {
+  body.admin button { margin: 14px 0 0 4px; }
   body.admin section#one { left: 0; top: 160px; width: 100%; }
   body.admin footer#createdby { top: 128px; bottom: auto; }
-
+  body.admin header#leftbar { height: 150px; }
 
   body,html { min-width: 0; }
 
