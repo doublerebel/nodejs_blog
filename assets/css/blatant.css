@@ -419,6 +419,8 @@ section#river { margin-left: 27%; min-width: 658px; position: relative; z-index:
   article.post blockquote p { max-width: none; }
   article.post ul.tags { display: none }
   
+  article.post .meta { border-bottom: 1px solid #aaa; }
+
   article h2 a:link,article h2 a:hover, article h2 a:visited, article h2 a:active { font: 700 1.25em/1.6em "Arvo",serif; -webkit-font-smoothing: antialiased; }
   article a:link, article a:visited, article a:hover, article a:active { color: white; }
   article a:hover, article a:active { border-bottom: 1px solid #ccc; }
