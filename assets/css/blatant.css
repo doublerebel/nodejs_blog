@@ -433,6 +433,11 @@ footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 2
   #credit a:hover { color: #00CDFF; }
 
 
+/* Admin */
+article#login { padding-top: 2em; }
+
+
+
 @media all and (device-width:768px) and (device-height:1024px),only all and (max-height:630px) {
   header#leftbar { position: absolute; }
   footer#createdby { position: absolute; top: 700px; }

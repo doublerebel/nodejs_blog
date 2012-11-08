@@ -337,7 +337,7 @@ article#about #search-form{
 .post ul.tags li a{
   color: #343131;
   display: block;
-  background: url(../img/tag.png) no-repeat 5px center;
+  background: url(/images/tag.png) no-repeat 5px center;
   font-size: 0.8em;
   font-family: "MuseoSans-500";
   padding: 0 15px 0 25px;
