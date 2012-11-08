@@ -23,9 +23,11 @@ app.use(express.responseTime())
 app.set('view engine', 'jade')
 views_dir = "./themes/" + core.config.theme + "/views"
 app.set('views', views_dir)
+app.set('view options', { pretty: true });
+
 app.use(gzippo.compress())
 app.use(express.session({
-  secret: core.config.crypto_key, 
+  secret: core.config.crypto_key,
   store: MemStore({
     reapInterval: 60000 * 10
   })
