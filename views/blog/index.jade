@@ -23,7 +23,8 @@ section#river
           != moment(post.date).format('LL')
         p
           != md.parse(post.body)
-    
+        != partial('post_tags', {post : post})
+
     
     - if (posts.length == 10)
       div.nav_botton
