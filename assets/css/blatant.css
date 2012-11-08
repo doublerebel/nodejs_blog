@@ -449,7 +449,8 @@ article#login fieldset p { padding-left: 0; }
 }
 
 @media all and (max-width:330px) {
-  ul#author_meta li.blog_name h1 a { font-size: 1.1em; line-height: 0.8em; }
+  ul#author_meta li.blog_name h1 { line-height: 0.8em; }
+  ul#author_meta li.blog_name h1 a { font-size: 1.1em; }
 }
 
 @media all and (max-width:630px) {
