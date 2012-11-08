@@ -482,6 +482,7 @@ body.admin footer#createdby div.content { bottom: 200px; position: relative; lef
 body.admin footer#createdby button { margin: 0; }
 body.admin footer#createdby button a { color: black; }
 
+body.admin section#river { max-width: 480px; min-width: 320px; z-index: 50; margin: 0 auto; min-height: 100%; border-left: 0; }
 
 body.admin section li {
   background-color: #24201B;
