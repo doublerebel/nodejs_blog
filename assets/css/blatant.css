@@ -470,7 +470,7 @@ body.admin button { padding: 10px; margin: 14px 0 0 14px; background: #e0e0e0; b
 body.admin button:hover { background-color: white; }
 body.admin button .icon { margin: 0 4px; }
 
-
+body.admin section h1 { font-size: 3em; font-weight: 300; }
 body.admin section li:hover { margin-left: -16px; background-color: white; -webkit-transition: color 0.2s ease-out, margin 0.2s ease-out,background-color 0.1s ease-in-out; color: #444; }
 body.admin section li h2 { color: inherit!important; }
 body.admin section li a { color: inherit!important; }
