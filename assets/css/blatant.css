@@ -415,6 +415,7 @@ section#river { margin-left: 27%; min-width: 658px; position: relative; z-index:
 
   article.post { width: auto; display: block; position: relative; padding-left: 50px; padding-top: 2.5em; padding-bottom: 2.5em; border-top: 1px solid #4A4A4A; min-height: 130px; overflow-x: hidden; }
   article.post h2, article.post p { max-width: 500px; }
+  article.post time { display: none; }
   article.post blockquote p { max-width: none; }
   
   article h2 a:link,article h2 a:hover, article h2 a:visited, article h2 a:active { font: 700 1.25em/1.6em "Arvo",serif; -webkit-font-smoothing: antialiased; }

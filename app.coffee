@@ -21,6 +21,7 @@ app.use require('connect-assets')()
 #app.use(express.static(__dirname + '/public'))
 app.use(gzippo.staticGzip(__dirname + '/public'))
 app.set('view engine', 'jade')
+app.set('view options', { pretty: true });
 app.use(gzippo.compress())
 
 
