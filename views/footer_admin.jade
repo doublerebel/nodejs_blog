@@ -1,6 +1,10 @@
 footer.top
-  a(href='/admin/posts')
-    button Posts  
+  - if(req.url == "/admin/posts")
+    a(href='/admin/posts/new')
+      button New Post
+  - else
+    a(href='/admin/posts')
+      button Posts  
   a(href='/media')
     button Media
   a(href='/admin/messages')
