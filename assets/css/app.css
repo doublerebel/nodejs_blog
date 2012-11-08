@@ -18,11 +18,11 @@
     top: 0.1em;
 }
 
-
 #search-form{
   width: 180px;
-  margin: auto;
-  display: none;
+  position: absolute;
+  right: 6em;
+  top: 3em;
 }
 
 article#about #search-form{
