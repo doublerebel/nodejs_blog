@@ -19,7 +19,7 @@ body { margin: 0; font-size: 1em; }
     text-shadow: none;
 }
 
-a:focus { outline: thin dotted; }
+a:focus { outline: thin r; }
 a:hover,a:active { outline: 0; }
 
 abbr[title] { border-bottom: 1px dotted; }
@@ -463,8 +463,8 @@ body.admin section li h2 { font: 400 1.2em/3em 'Raleway','Helvetica',sans-serif;
 body.admin section#one li, body.admin section#three li { height: 5em; border-bottom: 1px solid #444; padding-left: 10px; }
 body.admin section#three ul { padding-left: 10px; }
 
-body.admin footer.top { background: #e0e0e0; position: absolute; bottom: 0; margin: auto 0; width: 100%; left: 0; height: 69px; z-index: 100; text-align: center; }
-body.admin footer.bg { background-color: #1E1B17; opacity: 0.6; border-top: 8px solid #e0e0e0; position: absolute; bottom: 0; left: 0; right: 0; height: 69px; z-index: 90; }
+body.admin footer.top { background: #e0e0e0; position: fixed; bottom: 0; margin: auto 0; width: 100%; left: 0; height: 69px; z-index: 100; text-align: center; }
+body.admin footer.bg { background-color: #1E1B17; opacity: 0.6; border-top: 8px solid #e0e0e0; position: fixed; bottom: 0; left: 0; right: 0; height: 69px; z-index: 90; }
 
 body.admin button { padding: 10px; margin: 14px 0 0 14px; background: #e0e0e0; border: 0; color: black; }
 body.admin button:hover { background-color: white; }
@@ -810,4 +810,7 @@ background-color: #24201B;
 height: 50px;
 background-color: #302A24;
 border: 1px solid #24201B;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

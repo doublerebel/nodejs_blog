@@ -1,4 +1,4 @@
-- if(req.url != "/admin/posts/new" && req.url != "/admin/posts/edit")
+- if(req.url.indexOf('/admin/posts/') == -1)
   header#leftbar
     div.clearfix.container
       aside#logo.cube
