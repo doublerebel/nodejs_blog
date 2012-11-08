@@ -1,6 +1,6 @@
 $ ->
 	$('textarea').each ->
-	    $(this).autosize();  
+	    $(this).autosize()
 
 	$('#search-button').click ->
 		$('#search-form').slideDown 'fast',  -> $('#search-field').focus()
