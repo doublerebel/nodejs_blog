@@ -487,6 +487,10 @@ body.admin section#river .content { margin-top: 6em; }
 body.admin section fieldset { border: 0; }
 body.admin section textarea, body.admin section input[type=text] { background: transparent; outline: 0; }
 
+#new-post-form #text { font-size: 0.95em; line-height: 1.6em; }
+#new-post-form #title-field { color: white; }
+#new-post-form #tags-field { color: #787878; }
+
 body.admin section li {
   background-color: #24201B;
   color: #CCC;
@@ -814,4 +818,5 @@ ul#author_meta li.subscribe span:hover a {
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
+  border: 0;
 }
