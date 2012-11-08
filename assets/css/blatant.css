@@ -411,7 +411,7 @@ section#river { margin-left: 27%; min-width: 658px; position: relative; z-index:
   header#headwaters { padding-left: 2.5em; padding-top: 2.5em; padding-bottom: 2.5em; color: white; }
   header#headwaters time { display: block; position: relative; text-transform: uppercase; font: 800 1em/2em "Raleway",sans-serif; letter-spacing: 1px; }
   header#headwaters time small { font-weight: 900; letter-spacing: 2px; }
-  header#headwaters a#search-button { position: absolute; right: 3em; top: 3em; }
+  header#headwaters a#search-button { position: absolute; right: 3em; top: 3em; color: #686868; }
 
   article.post { width: auto; display: block; position: relative; padding-left: 50px; padding-top: 2.5em; padding-bottom: 2.5em; border-top: 1px solid #4A4A4A; min-height: 130px; overflow-x: hidden; }
   article.post h2, article.post p { max-width: 500px; }
