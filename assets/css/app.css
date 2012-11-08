@@ -23,6 +23,7 @@
   position: absolute;
   right: 6em;
   top: 3em;
+  display: none;
 }
 
 article#about #search-form{

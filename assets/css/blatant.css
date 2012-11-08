@@ -493,8 +493,9 @@ footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 2
     aside#logo .front { margin: -144px 8px 16px 29px; width: 117px; height: 117px; }
     
     ul#author_meta { max-width: 300px; width: 65%; }
-      ul#author_meta li.blog_name h1 a { font-size: 2em; line-height: 2em; }
-      ul#author_meta li.tagline h2 { font-size: 1.2em; line-height: 1.6em; }
+      ul#author_meta li.blog_name h1 a { font-size: 2em; line-height: 1.4em; }
+      ul#author_meta li.author_name h2 { font-size: 1.6em; }
+      ul#author_meta li.tagline h2 { font-size: 1.2em; line-height: 2.2em; }
   
   footer#createdby { padding-left: 2%; }
     footer #doublerebel_com { bottom: 1em; }
