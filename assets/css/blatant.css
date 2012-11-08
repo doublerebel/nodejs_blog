@@ -494,6 +494,7 @@ article#login fieldset p { padding-left: 0; }
   article#login { position: absolute; margin: 0; padding: 0; border: none; display: block; width: auto; min-width: 0; margin-top: 0.95em; clear: both; }
   article#login { width: 100%; max-width: 100%; }
   article#login { margin-top: 0.95em; border-top: 1px solid #4A4A4A; border-left: 0; }
+  article#login .content { padding-top: 1.6em; }
 }
 
 @media all and (min-width:630px) and (max-width:1024px) {
