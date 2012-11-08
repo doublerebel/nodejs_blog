@@ -411,7 +411,8 @@ section#river { margin-left: 27%; min-width: 658px; position: relative; z-index:
   header#headwaters { padding-left: 2.5em; padding-top: 2.5em; padding-bottom: 2.5em; color: white; }
   header#headwaters time { display: block; position: relative; text-transform: uppercase; font: 800 1em/2em "Raleway",sans-serif; letter-spacing: 1px; }
   header#headwaters time small { font-weight: 900; letter-spacing: 2px; }
-  
+  header#headwaters a#search-button { position: absolute; right: 3em; top: 3em; }
+
   article.post { width: auto; display: block; position: relative; padding-left: 50px; padding-top: 2.5em; padding-bottom: 2.5em; border-top: 1px solid #4A4A4A; min-height: 130px; overflow-x: hidden; }
   article.post h2, article.post p { max-width: 500px; }
   article.post blockquote p { max-width: none; }
@@ -462,10 +463,10 @@ footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 2
     article blockquote p { padding-left: 0.6em; padding-right: 1.4em;}
     article iframe,article object { min-height: 250px; min-width: 0; }
   
-    section#river header#headwaters { border-top: 1px solid #4A4A4A; padding: 1.6em 0; color: #e0e0e0; text-align: center; position: relative; }
-    section#river header#headwaters a#search-button { position: absolute; right: 0.95em; bottom: 0.5em; color: #555; }
+    header#headwaters { border-top: 1px solid #4A4A4A; padding: 1.6em 0; color: #e0e0e0; text-align: center; position: relative; }
+    header#headwaters a#search-button { position: absolute; right: 0.95em; bottom: 0.5em; color: #555; }
     a#search-button:hover, a#search-button:active { color: #e0e0e0; }
-    section#river header#headwaters #search-form { position: relative; right: 6em; top: 3em; margin: 0.6em auto 0; }
+    header#headwaters #search-form { position: relative; right: 6em; top: 3em; margin: 0.6em auto 0; }
     
     section#river article { width: auto; padding-left: 0; padding-top: 2em; padding-bottom: 2em; overflow: hidden; }
     section#river article.post { border-top: 1px solid #333; }
@@ -717,5 +718,3 @@ ul#author_meta li.subscribe span:hover a {
         page-break-after: avoid;
     }
 }
-
-a#search-button { position: absolute; right: 3em; top: 3em; }
