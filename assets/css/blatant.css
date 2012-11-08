@@ -434,7 +434,8 @@ footer#createdby { position: fixed; left: 0; bottom: 0; width: 27%; min-width: 2
 
 
 /* Admin */
-article#login { padding-top: 2em; }
+article#login { padding-top: 2em; border-top: 1px solid #4A4A4A; }
+article#login fieldset p { padding-left: 0; }
 
 
 
