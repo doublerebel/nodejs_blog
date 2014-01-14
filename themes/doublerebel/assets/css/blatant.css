@@ -455,13 +455,14 @@ body.admin section ul, body.admin section li { margin: 0; }
 body.admin section ul { padding: 20px; }
 body.admin section #one ul { padding: 0 20px; }
 body.admin section h2 { margin: 0; }
-body.admin section li h4 { margin-top: -0.8em; color: #606060; font-size: 0.95em; }
+body.admin section li h4 { margin-top: -0.8em; color: #606060; font-size: 0.95em; display: inline; white-space: nowrap; }
 body.admin section li time { text-transform: uppercase; }
 body.admin section li time small { font-weight: 800; letter-spacing: 1px; }
 
 body.admin section header h1 { display:none; position: absolute; margin: 0.4em 0.2em 0.2em 0.4em; color: white; font: 700 3em/1.4em 'Raleway','Helvetica',sans-serif; height: 1.6em; width: 1.6em; text-align: center; background: #38342E; opacity: 0.5; }
 body.admin section#one header h1 { left: auto; right: 0em;}
-body.admin section li h2 { font: 400 1.2em/3em 'Raleway','Helvetica',sans-serif; }
+body.admin section li { padding: 10px; }
+body.admin section li h2 { font: 400 1.2em/1.5em 'Raleway','Helvetica',sans-serif; display: inline; }
 body.admin section#one li, body.admin section#three li { height: 5em; border-bottom: 1px solid #444; padding-left: 10px; }
 body.admin section#three ul { padding-left: 10px; }
 
