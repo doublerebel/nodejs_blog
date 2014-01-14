@@ -1,0 +1,30 @@
+.raleway { line-height: 1.45em; font-family: Raleway; font-weight: 200; }
+a { text-decoration: none; font-family: Arvo; color: white; }
+html, body { min-height: 800px; background: #df9c08 url("http://www.doublerebel.com/images/houndstile-v3.png") repeat }
+html { height: 100%; min-height: 800px; }
+body { height: 100%; min-height: 800px; margin:0; padding: 0; font-family: Arvo; position: relative; }
+  header#main { height: 76px; width: 100%; position: absolute; top: 0; left: 0; z-index: 50; border-bottom: 1px solid #8B3700; background: rgba(255, 165, 0, 0.2); }
+    #dblrbl { position: absolute; left: 0; top: 0; display: block; width: 232px; height: 103px; margin: 0; background: url("http://www.doublerebel.com/images/dblrbl_v2_head.png") top left no-repeat; }
+      #dblrbl_hover { opacity: 0; display: block; cursor: pointer; background: url("http://www.doublerebel.com/images/dblrbl_v2_head-hover.png"); width:232px; height:103px; color: transparent!important; }
+    header nav { position: absolute; display: block; height: 100%; width: 370px; right: 0; top: 0; overflow: hidden; }
+      header nav a { display: block; height: 100%; top: -5px; position: relative; width: 120px; float: right; text-align: center; font: 1.2em Arvo; line-height: 6.7em; text-transform: lowercase; background: rgba(68, 68, 68, 0.6); color: #AAA; border-bottom: 5px solid rgba(68, 68, 68, 0.6); }
+      header nav a:hover { border-bottom: 5px solid orange; color: white; }
+      header nav a.selected { color: white; }
+
+  section { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10; overflow: hidden; }
+    section nav a { display: block; height: 64px; width: 64px; position: absolute; top: 45%; z-index: 60; opacity: 0.2; }
+    section nav a:hover { opacity: 0.8; }
+    section nav a.prev { background-image: url("/images/prev.png"); left: 8px; }
+    section nav a.next { background-image: url("/images/next.png"); right: 8px; }
+    section .scrollwrapper { position: relative; width: 10000px; height: 100%; }
+    section ul { list-style-type: none; height: 100%; width: 100%; margin: 0; padding: 0; }
+      section ul li { position: relative; display: block; width: 480px; float: left; height: 100%; font-size: 1.1em; }
+      section ul li header { border: none; border-top: 7px solid #555; height: 200px; background: rgba(20, 20, 20, 0.77); position: absolute; bottom: -200px; left: 0; width: 100%; }
+      section ul li header h2 { margin: 30px 30px 0; color: white; }
+      section ul li header h2 a:hover { color: #00CDFF; }
+      section ul li header h4 { margin: 20px 30px 30px; color: white; }
+      
+  footer { display: block; height: 20px; background: #444; width: 100%; position: absolute; left: 0; bottom: 0; z-index: 40; border-top: 1px solid black; overflow: hidden; text-align: center;}
+    footer span { color: #777; margin-right: 8px; text-align: center; font-size: 0.7em; line-height: 1.9em; display: none; }
+  
+

@@ -1,0 +1,15 @@
+footer.top
+  - if(req.url == "/admin/posts")
+    a(href='/admin/posts/new')
+      button New Post
+  - else
+    a(href='/admin/posts')
+      button Posts  
+  a(href='/media')
+    button Media
+  a(href='/admin/messages')
+    button Messages 
+  a(href='/logout')
+    button 
+      | Log Out <span class="icon">v</span>
+footer.bg

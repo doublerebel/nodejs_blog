@@ -1,0 +1,6 @@
+section#river
+  div.content
+    - if (notice)
+      p =notice
+    form#new-post-form(name='post', method='post', action='/admin/posts')
+      !=partial('post_form', {post:post})

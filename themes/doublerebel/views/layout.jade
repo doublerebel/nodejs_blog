@@ -1,0 +1,42 @@
+!!! 5
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    title =pageTitle
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible", content="chrome=1")
+    meta(name="description", content="Blog of Charles Phillips, full-stack JavaScript developer.  I fix things.")
+    link(href='http://fonts.googleapis.com/css?family=Arvo:400,700',rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Raleway:200,400,500,600,800,900', rel='stylesheet', type='text/css')
+    != css('app')
+    != css('blatant')
+    != css('http://releases.flowplayer.org/5.0.0/skin/minimalist.css')
+    != js('jquery-1.7.2.min')
+    != js('underscore-min')
+    != js('jquery.autosize')
+    != js('http://releases.flowplayer.org/5.0.0/flowplayer.min.js')
+    != js('app')
+
+  body
+    !=partial('menu')
+    !=body
+
+    footer#createdby
+      aside#doublerebel_com
+        a(href='https://doublerebel.com')
+          span.logo
+            span.logo_inner  
+          span.doublerebel doublerebel.com
+      aside#credit
+        span
+          a(href='http://github.com/doublerebel/nodejs_blog') Blatant
+          | &nbsp;fork of&nbsp;
+          a(href='http://svbtle.com') Svbtle
+          | &nbsp;
+          br
+          | powered by&nbsp;
+          a(href='https://github.com/guidefreitas/nodejs_blog') nodejs_blog
+          | .
+    
+    !=partial('analytics')
