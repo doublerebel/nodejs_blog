@@ -87,4 +87,4 @@ routes = require('./routes')(app)
 
 port = process.env.PORT || 3000;
 app.listen(port)
-console.log('Server running at http://0.0.0.0:3000/')
+console.log("Server running at http://0.0.0.0:#{port}/")
