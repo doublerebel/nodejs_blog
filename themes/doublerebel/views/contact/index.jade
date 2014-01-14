@@ -1,29 +1,32 @@
+extends ../layout
+
+block content
+
 article#about
 	header
-		!=partial('search_field')
+		include ../search_field
 
 	div#about-profile-area
 		div.profile
 			div#image
 				img.profile-image(src='/img/about/about.png')
 			div.profile-description
-				p Bacharel em Sistemas de Informação, com especialização em Engenharia de Software e Mestrando em Computação Aplicada na Universidade do Estado de Santa Catarina (UDESC).
-
+				p!= config.author_bio_description
 
 				ul.social
-					li 
+					li
 						a(href=config.author_facebook_url)
 							img.social-icon(src='/img/icons/facebook.png')
-					li 
+					li
 						a(href=config.author_twitter_url)
 							img.social-icon(src='/img/icons/twitter.png')
-					li 
+					li
 						a(href=config.author_linkedin_url)
 							img.social-icon(src='/img/icons/linkedin.png')
-					li 
+					li
 						a(href=config.author_github_url)
 							img.social-icon(src='/img/icons/github.png')
-					li 
+					li
 						a(href=config.author_skype_url)
 							img.social-icon(src='/img/icons/skype.png')
 
@@ -33,18 +36,18 @@ article#about
 	div#contact-form-area
 		form.contact-form(name='contact', method='post', action='/about/message')
 			fieldset
-				label Nome
+				label Name
 				span
 					input(name='name', class='text-input')
 			fieldset
-				label Email	
+				label Email
 				span
 					input(name='email', class='text-input')
 
 
 
 			fieldset
-				label Mensagem	
+				label Message
 				span
 					textarea#text(name='message', placeholder='', type='text', cols='40', rows='6')
 

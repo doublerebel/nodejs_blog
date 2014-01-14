@@ -1,10 +1,14 @@
+extends ../../admin_layout
+
+block content
+
 article.blog
 	div.content
 		section
 			h2= message.name
 			p.meta
 				!= moment(message.date).format('LL')
-			
+
 			p!= message.body
 
 			a.button-edit(href='/admin/messages/edit/' + message._id) Edit
@@ -13,4 +17,3 @@ article.blog
 				input(type="submit", class='button-delete', name='delete', value='Delete')
 
 
-			

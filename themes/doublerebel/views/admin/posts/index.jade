@@ -1,3 +1,7 @@
+extends ../../admin_layout
+
+block content
+
 section#one
   ul
     - each post in posts
@@ -5,11 +9,11 @@ section#one
         h2
           a(href='/admin/posts/' + post._id)!= post.title
         h4
-          time 
+          time
             != moment(post.date).format('LL')
 
 footer#createdby
   div#admin-posts.content
     - if (notice)
       p =notice
-      
+

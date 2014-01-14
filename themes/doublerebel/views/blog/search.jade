@@ -1,8 +1,12 @@
+extends ../layout
+
+block content
+
 article#blog-search-page.blog
 	header
-		!=partial('search_field')
-	
-	
+		include ../search_field
+
+
 	- if (posts.length == 0)
 		div.content
 			p Nenhum post encontrado
@@ -10,16 +14,16 @@ article#blog-search-page.blog
 		- each post in posts
 			div.content
 				section.post
-					h2 
+					h2
 						a(href='/'+post.urlid)!= post.title
 					p.meta
 						!= moment(post.date).format('LL')
-						
-					!= partial('post_tags', {post : post})
+
+					include ../post_tags
 
 					p!= md.parse(post.body)
-		
 
-									
-								
-									
+
+
+
+

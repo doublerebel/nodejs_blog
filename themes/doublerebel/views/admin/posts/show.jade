@@ -1,3 +1,7 @@
+extends ../../admin_layout
+
+block content
+
 section#river
   article.post
     header
@@ -6,7 +10,7 @@ section#river
         != moment(post.date).format('LL')
       //- a.author(href='/sobre')
       //- img(src='/img/about/gui.png', width='68', height='68')
-  
+
     p!= md.parse(post.body)
 
     div.horizontal_menu
@@ -18,4 +22,3 @@ section#river
           input(type="submit", class='button-delete', name='delete', value='Delete')
 
 
-      

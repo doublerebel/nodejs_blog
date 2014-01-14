@@ -1,14 +1,18 @@
+extends ../layout
+
+block content
+
 section#river
   header#headwaters
     time
       small November
       | &nbsp;06, 2012
 
-    a#search-button(href="#") 
-      | <span class="icon">z</span>  
+    a#search-button(href="#")
+      | <span class="icon">z</span>
 
-    !=partial('search_field')
-  
+    include ../search_field
+
 
   - if (posts.length == 0)
     article.post
@@ -23,16 +27,16 @@ section#river
           != moment(post.date).format('LL')
         p
           != md.parse(post.body)
-        != partial('post_tags', {post : post})
+        include ../post_tags
 
-    
+
     - if (posts.length == 10)
       div.nav_botton
         div.old_posts_nav_link
           a(href='/page/' + ( (!req.params.id) ? 2 : (parseInt(req.params.id) + 1) ))
-            img.icon(src='/img/back.png') 
+            img.icon(src='/img/back.png')
             span.label!= __('Old Posts')
 
-                  
-                
-                  
+
+
+

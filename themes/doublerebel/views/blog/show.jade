@@ -1,3 +1,7 @@
+extends ../layout
+
+block content
+
 section#river
   div.content
     article.post
@@ -8,6 +12,6 @@ section#river
         != moment(post.date).format('LL')
         //- a.author(href='/sobre')
         //-   img(src='/img/about/gui.png', width='68', height='68')
-      != partial('post_tags', {post : post})
+      include ../post_tags
       p!= md.parse(post.body)
 
