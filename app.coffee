@@ -3,17 +3,15 @@ express = require 'express'
 ghm     = require 'marked'
 moment  = require 'moment'
 gzippo  = require 'gzippo'
-{_}     = require 'underscore'
 i18n    = require 'i18n'
-Core    = require './blog_core'
+utils   = require './lib/utils'
 
 
 class Blog
   constructor: (options = {}) ->
-    config = require options.config
-    @core  = new Core config
-    @app   = options.app or express()
-    @port  = process.env.PORT or 3000
+    @Core = (require "./app/models/core").init options.config
+    @app  = options.app or express()
+    @port = process.env.PORT or options.port or 3000
 
     @initLocale()
     @initMiddleware()
@@ -25,13 +23,13 @@ class Blog
   initLocale: ->
     i18n.configure
       #setup some locales - other locales default to en silently
-      locales:['pt-br', 'en'],
+      locales:['pt-br', 'en']
       #where to register __() and __n() to, might be "global" if you know what you are doing
       register: global
 
     #SET SYSTEM LANGUAGE
-    i18n.setLocale @core.config.locale
-    moment.lang @core.config.locale
+    i18n.setLocale @Core.config.locale
+    moment.lang @Core.config.locale
 
   initMiddleware: ->
     # NODEJS MIDDLEWARES
@@ -39,13 +37,13 @@ class Blog
     @app.use express.methodOverride()
     @app.use express.cookieParser()
 
-    assets_dir = path.join "./themes", @core.config.theme, "assets"
+    assets_dir = path.join "./themes", @Core.config.theme, "assets"
     @app.use (require 'connect-assets')(src: assets_dir)
     @app.use express.static './public'
 
     @app.use express.responseTime()
 
-    views_dir = path.join "./themes", @core.config.theme, "views"
+    views_dir = path.join "./themes", @Core.config.theme, "views"
     @app.set 'views', views_dir
     @app.set 'view engine', 'jade'
     @app.set 'view options', pretty: true
@@ -54,7 +52,7 @@ class Blog
 
     MemStore = express.session.MemoryStore
     @app.use express.session
-      secret: @core.config.crypto_key
+      secret: @Core.config.crypto_key
       store: MemStore reapInterval: 60000 * 10
 
     @app.configure 'production', =>
@@ -64,13 +62,13 @@ class Blog
 
     @app.use @localMiddleware
     @app.use @app.router
-    routes = (require './routes')(@app)
+    @Routes = (require "./app/controllers/routes").init @app
 
   currentUser: (req, res, callback) =>
     return unless req.session?.userid
-    @core.User.findOne {_id: (@core.ObjectId req.session.userid)}, callback
+    @Core.User.findOne {_id: (@Core.ObjectId req.session.userid)}, callback
 
-  localMiddleware: (req, res, next) ->
+  localMiddleware: (req, res, next) =>
     res.locals.req         = req
     res.locals.session     = -> req.session if req.session?
     res.locals.token       = -> req.session._csrf if req.session?._csrf
@@ -78,9 +76,9 @@ class Blog
     res.locals.notice      = false
     res.locals.md          = ghm
     res.locals.moment      = moment
-    res.locals.TrimStr     = @core.TrimStr
-    res.locals.pageTitle   = @core.config.blog_title
-    res.locals.config      = @core.config
+    res.locals.TrimStr     = utils.trim
+    res.locals.pageTitle   = @Core.config.blog_title
+    res.locals.config      = @Core.config
     res.locals.__i         = i18n.__
     res.locals.__n         = i18n.__n
     next()
