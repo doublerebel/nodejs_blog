@@ -79,6 +79,8 @@ class Blog
     res.locals.req         = req
     res.locals.session     = -> req.session if req.session?
     res.locals.token       = -> req.session._csrf if req.session?._csrf
+    res.locals.css         = css
+    res.locals.js          = js
     res.locals.currentUser = @currentUser
     res.locals.notice      = false
     res.locals.md          = ghm
