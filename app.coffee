@@ -37,13 +37,14 @@ class Blog
     @app.use express.methodOverride()
     @app.use express.cookieParser()
 
-    assets_dir = path.join "./themes", @Core.config.theme, "assets"
+    theme_dir  = @findTheme @Core.config.theme
+    assets_dir = path.join theme_dir, "assets"
     @app.use (require 'connect-assets')(src: assets_dir)
     @app.use express.static './public'
 
     @app.use express.responseTime()
 
-    views_dir = path.join "./themes", @Core.config.theme, "views"
+    views_dir = path.join theme_dir, "views"
     @app.set 'views', views_dir
     @app.set 'view engine', 'jade'
     @app.set 'view options', pretty: true
@@ -63,6 +64,12 @@ class Blog
     @app.use @localMiddleware
     @app.use @app.router
     @Routes = (require "./app/controllers/routes").init @app
+
+  findTheme: (theme) =>
+    subfolder = path.join "themes", theme
+    if      local    = path.join process.cwd(), subfolder then local
+    else if included = path.join "./", subfolder          then included
+    else throw new Error "theme #{@Core.config.theme} not found"
 
   currentUser: (req, res, callback) =>
     return unless req.session?.userid
