@@ -24,8 +24,6 @@ class Blog
     i18n.configure
       #setup some locales - other locales default to en silently
       locales:['pt-br', 'en']
-      #where to register __() and __n() to, might be "global" if you know what you are doing
-      register: global
 
     #SET SYSTEM LANGUAGE
     i18n.setLocale @Core.config.locale
@@ -88,7 +86,7 @@ class Blog
     res.locals.TrimStr     = utils.trim
     res.locals.pageTitle   = @Core.config.blog_title
     res.locals.config      = @Core.config
-    res.locals.__i         = i18n.__
+    res.locals.__          = i18n.__
     res.locals.__n         = i18n.__n
     next()
 
