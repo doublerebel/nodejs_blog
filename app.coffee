@@ -61,7 +61,7 @@ class Blog
 
     @app.use @localMiddleware
     @app.use @app.router
-    @Routes = (require "./app/controllers/routes").init @app
+    @Routes = (require "./app/controllers/routes").init @app, @Core
 
   findTheme: (theme) =>
     subfolder = path.join "themes", theme
@@ -79,6 +79,7 @@ class Blog
     res.locals.token       = -> req.session._csrf if req.session?._csrf
     res.locals.css         = css
     res.locals.js          = js
+    res.locals.img         = img
     res.locals.currentUser = @currentUser
     res.locals.notice      = false
     res.locals.md          = ghm

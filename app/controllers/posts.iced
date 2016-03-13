@@ -8,5 +8,6 @@ exports.show_post = (req, res) ->
   return res.render('404', pageTitle: 'Not Found') unless post
 
   res.render 'blog/show',
-    pageTitle: "#{core.config.blog_title}-#{post.title}"
+    pageTitle: "#{Core.config.blog_title}-#{post.title}"
     post: post
+

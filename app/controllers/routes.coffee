@@ -13,7 +13,7 @@ admin_messages = require './admin/messages'
 
 
 class Routes
-  @init: (@app) ->
+  @init: (@app, @Core) ->
     @addRoutes()
     this
 
@@ -42,6 +42,7 @@ class Routes
     @app.post '/admin/posts',             @isAdmin, admin_posts.create_post
     @app.get  '/admin/posts/:id',         @isAdmin, admin_posts.show_post
     @app.get  '/admin/posts/edit/:id',    @isAdmin, admin_posts.edit_post
+    @app.get  '/admin/posts/edit/:id/pen',@isAdmin, admin_posts.edit_post_withpen
     @app.put  '/admin/posts/:id',         @isAdmin, admin_posts.update_post
     @app.del  '/admin/posts/:id',         @isAdmin, admin_posts.remove_post
     @app.get  '/admin/messages',          @isAdmin, admin_messages.index
@@ -62,10 +63,9 @@ class Routes
   @isAdmin: (req, res, next) =>
     return unless @isAuthenticated arguments...
 
-    Core = @app.Core
-    Core.User.findOne {_id: (Core.ObjectId req.session.userid)}, (err, user) ->
+    @Core.User.findOne {_id: (@Core.ObjectId req.session.userid)}, (err, user) ->
       unless user and not err
-        next new Error 'Unauthorized'
+        return next new Error 'Unauthorized'
 
       next() if user.admin
 

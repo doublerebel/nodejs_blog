@@ -23,6 +23,8 @@ exports.new_post = (req, res) ->
 
 
 exports.create_post = (req, res) ->
+  moment = require "moment"
+
   error = (err) -> res.render "500", pageTitle: "Error: #{err}"
   {title, body, tags} = req.body.post
   urlid = utils.doDashes title
@@ -55,10 +57,10 @@ exports.show_post = (req, res) ->
   return error err if err
   res.render("404", pageTitle: "Not Found") unless post
 
-    res.render "admin/posts/show",
-      pageTitle: "New Post"
-      layout: "admin_layout"
-      post:post
+  res.render "admin/posts/show",
+    pageTitle: "New Post"
+    layout: "admin_layout"
+    post:post
 
 
 exports.edit_post = (req, res) ->
@@ -69,6 +71,19 @@ exports.edit_post = (req, res) ->
   res.render("404", pageTitle: "Not Found") unless post
 
   res.render "posts/edit",
+    pageTitle: "New Post"
+    layout: "admin_layout"
+    post:post
+
+
+exports.edit_post_withpen = (req, res) ->
+  error = (err) -> res.render "500", pageTitle: "Error: #{err}"
+
+  await Core.Post.findOne({_id : Core.ObjectId(req.params.id)}).exec defer err, post
+  return error err if err
+  res.render("404", pageTitle: "Not Found") unless post
+
+  res.render "posts/edit_withpen",
     pageTitle: "New Post"
     layout: "admin_layout"
     post:post

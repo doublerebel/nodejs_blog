@@ -1,6 +1,7 @@
 Base   = require "./base"
 {trim} = require "../../lib/utils"
 
+
 class Post extends Base
   @name: "Post"
 
@@ -14,16 +15,20 @@ class Post extends Base
     date: Date
 
   @statics:
-    postsByDate: (num, cb) =>
-      @Store.find().sort('-date').limit(num).exec cb
+    postsByDate: (num, autocb) =>
+      await @Store.find().sort('-date').limit(num).exec defer err, posts
+      return err if err
+      posts
 
     tags: (autocb) =>
       await @Store.find().select('tags').exec defer err, tags
       return err if err
       return unless tags
 
-      filtered_tags = for tag in tags when tag.tags
-        tag2 for tag2 in (tag.tags.split ',') when (tag2 = (trim tag2).toUpperCase()) and tag2 not in filtered_tags
+      filtered_tags = []
+      for tag in tags when tag.tags
+        for tag2 in (tag.tags.split ',') when (tag2 = (trim tag2).toUpperCase()) and tag2 not in filtered_tags
+          filtered_tags.push tag2
 
     postsByTag: (tag, autocb) =>
       tag = new RegExp(tag, 'i') unless tag instanceof RegExp
@@ -32,7 +37,7 @@ class Post extends Base
       return err if err
       posts
 
-    postsByKeyword: (keyword) =>
+    postsByKeyword: (keyword, autocb) =>
       keyword = new RegExp(keyword, 'i') unless keyword instanceof RegExp
 
       filter = $or: [
@@ -43,8 +48,6 @@ class Post extends Base
       await @Store.find(filter).sort('-date').exec defer err, posts
       return err if err
       posts
-
-
 
 
 module.exports = Post
