@@ -1,24 +1,42 @@
-path    = require 'path'
-express = require 'express'
+http          = require "http"
+path          = require "path"
+express       = require "express"
+favicon       = require "serve-favicon"
+morgan        = require "morgan"
+assets        = require "connect-assets"
+compression   = require "compression"
+override      = require "method-override"
+cookieParser  = require "cookie-parser"
+bodyParser    = require "body-parser"
+responseTime  = require "response-time"
+session       = require "express-session"
+Consul        = require "consul"
+ErrorHandlers = require "./app/controllers/error-handlers"
+
+
 ghm     = require 'marked'
 moment  = require 'moment'
-gzippo  = require 'gzippo'
 i18n    = require 'i18n'
 utils   = require './lib/utils'
 
 
 class Blog
-  constructor: (options = {}) ->
-    @Core = (require "./app/models/core").init options.config
-    @app  = options.app or express()
-    @port = process.env.PORT or options.port or 3000
+  port: 3000
 
-    @initLocale()
+  log:   console.log
+  error: console.error
+
+  constructor: (options = {}) ->
+    @address = process.env.OPTIK_PRIVATE_IP
+    @port    = process.env.PORT or options.port or @port
+    @app     = options.app or express()
+
+    @Core    = (require "./app/models/core").init options.config
+
     @initMiddleware()
 
-  start: ->
-    @app.listen @port
-    console.log "Server running at http://0.0.0.0:#{@port}/"
+    @bindRoutes()
+    @handleRouteErrors()
 
   initLocale: ->
     i18n.configure
@@ -27,41 +45,111 @@ class Blog
 
     #SET SYSTEM LANGUAGE
     i18n.setLocale @Core.config.locale
-    moment.lang @Core.config.locale
+    moment.locale @Core.config.locale
 
   initMiddleware: ->
-    # NODEJS MIDDLEWARES
-    @app.use express.bodyParser()
-    @app.use express.methodOverride()
-    @app.use express.cookieParser()
+    # method-override must come before any middleware that relies on METHOD
+    @app.use override()
 
-    theme_dir  = @findTheme @Core.config.theme
-    assets_dir = path.join theme_dir, "assets"
-    @app.use (require 'connect-assets')(src: assets_dir)
-    @app.use express.static './public'
+    @initLocale()
+    theme_dir   = @findTheme @Core.config.theme
+    subdirs     = ["assets/js", "assets/fonts", "assets/css", "assets/img"]
+    assets_dirs = (path.join theme_dir, subdir for subdir in subdirs)
+    @app.use assets paths: assets_dirs
 
-    @app.use express.responseTime()
+    @app.use responseTime()
 
     views_dir = path.join theme_dir, "views"
     @app.set 'views', views_dir
     @app.set 'view engine', 'jade'
     @app.set 'view options', pretty: true
 
-    @app.use gzippo.compress()
-
-    MemStore = express.session.MemoryStore
-    @app.use express.session
+    MemStore = session.MemoryStore
+    @app.use session
       secret: @Core.config.crypto_key
       store: MemStore reapInterval: 60000 * 10
+      resave: false
+      saveUninitialized: false
 
-    @app.configure 'production', =>
+    if (@app.get "env") is "development"
+      @app.use express.static './public'
+      # @app.use errorHandler()
+    else
       oneYear = 86400
       @app.use express.static (path.join __dirname, '/public'), maxAge: oneYear
-      @app.use express.errorHandler()
 
+    # uncomment after placing your favicon in /public
+    # @app.use favicon path.join __dirname, "public", "favicon.ico"
+    @app.use morgan "dev"
+    @app.use compression()
+    @app.use bodyParser.json()
+    @app.use bodyParser.urlencoded extended: false
+    @app.use cookieParser()
+    @app.use express.static path.join __dirname, "../", "public"
+
+
+  localMiddleware: (req, res, next) =>
+    res.locals.req         = req
+    res.locals.session     = -> req.session if req.session?
+    res.locals.token       = -> req.session._csrf if req.session?._csrf
+    res.locals.currentUser = @currentUser
+    res.locals.notice      = false
+    res.locals.md          = ghm
+    res.locals.moment      = moment
+    res.locals.TrimStr     = utils.trim
+    res.locals.pageTitle   = @Core.config.blog_title
+    res.locals.config      = @Core.config
+    res.locals.__          = i18n.__
+    res.locals.__n         = i18n.__n
+    next()
+
+  bindRoutes: ->
     @app.use @localMiddleware
-    @app.use @app.router
     @Routes = (require "./app/controllers/routes").init @app, @Core
+
+  handleRouteErrors: ->
+    @app.use ErrorHandlers.error404
+    @app.use ErrorHandlers.catchAllDev if (@app.get "env") is "development"
+    @app.use ErrorHandlers.catchAllProd
+
+  listen: (port = @port) ->
+    @server = http.createServer @app
+    @server.listen port
+    @server.on "error", @error
+    @server.on "listening", @listening
+
+  error: (error) ->
+    throw error if error.syscall isnt "listen"
+
+    bind = if typeof @port is "string" then "Pipe #{@port}" else "Port #{@port}"
+
+    # handle specific listen errors with friendly messages
+    switch error.code
+      when "EACCES"
+        console.error "#{bind} requires elevated privileges"
+        process.exit 1
+      when "EADDRINUSE"
+        console.error "#{bind} is already in use"
+        process.exit 1
+      else
+        throw error
+
+  listening: => @log "listening on #{@server.address().port}"
+
+  register: (callback) ->
+    consul = new Consul host: process.env.OPTIK_ADMIN_IP
+    website =
+      name: "nextorig.in-website"
+      id: "nextorigin-website"
+      tags: ["urlprefix-nextorig.in/"]
+      address: @address
+      port: @port
+      check:
+        http: "http://#{@address}:#{@port}/"
+        interval: "10s"
+        timeout: "2s"
+
+    consul.agent.service.register website, callback
 
   findTheme: (theme) =>
     subfolder = path.join "themes", theme
@@ -73,23 +161,6 @@ class Blog
     return unless req.session?.userid
     @Core.User.findOne {_id: (@Core.ObjectId req.session.userid)}, callback
 
-  localMiddleware: (req, res, next) =>
-    res.locals.req         = req
-    res.locals.session     = -> req.session if req.session?
-    res.locals.token       = -> req.session._csrf if req.session?._csrf
-    res.locals.css         = css
-    res.locals.js          = js
-    res.locals.img         = img
-    res.locals.currentUser = @currentUser
-    res.locals.notice      = false
-    res.locals.md          = ghm
-    res.locals.moment      = moment
-    res.locals.TrimStr     = utils.trim
-    res.locals.pageTitle   = @Core.config.blog_title
-    res.locals.config      = @Core.config
-    res.locals.__          = i18n.__
-    res.locals.__n         = i18n.__n
-    next()
 
 
 module.exports = Blog
