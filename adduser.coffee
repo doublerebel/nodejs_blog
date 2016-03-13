@@ -1,24 +1,33 @@
-crypto = require 'crypto'
-core   = require './blog_core'
-config = require './config'
+#!/usr/bin/iced
 
-username = 'newuser'
-password = 'newpassword'
+crypto = require "crypto"
+Core   = require "guilherme-blog/app/models/core"
+config = require "./config"
+{log}  = console
+
+username = ""
+password = ""
 pass_crypted = (crypto.createHmac "md5", config.crypto_key).update(password).digest("hex")
 
-user = new core.User
+Core.init require "./config"
+user = new Core.User
   username: username
   password: pass_crypted
-  email: 'charles@doublerebel.com'
+  email: "email@domain.com"
   admin: true
 
-user.save (err) -> console.log err
+await user.save defer err
+if err
+  log "unable to save user"
+  log err
+  process.exit 1
 
-core.User.findOne {username : username}, (err, user2) ->
-  console.log user2.email
-  console.log user2.username
-  console.log user2.password
-  console.log user2.admin
-  (console.log err) if err
+await Core.User.findOne {username : username}, defer err, user2
+log user2.email
+log user2.username
+log user2.password
+log user2.admin
+(log err) if err
 
-console.log 'completed processing calls'
+log "completed processing calls"
+process.exit 0
