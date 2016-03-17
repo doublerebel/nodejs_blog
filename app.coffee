@@ -2,7 +2,6 @@ http          = require "http"
 path          = require "path"
 
 express       = require "express"
-morgan        = require "morgan"
 assets        = require "connect-assets"
 bodyParser    = require "body-parser"
 compression   = require "compression"
@@ -10,6 +9,8 @@ favicon       = require "serve-favicon"
 override      = require "method-override"
 responseTime  = require "response-time"
 session       = require "express-session"
+
+Flannel       = require "flannel"
 Consul        = require "consul"
 ErrorHandlers = require "./app/controllers/error-handlers"
 
@@ -21,12 +22,14 @@ utils   = require './lib/utils'
 
 
 class Blog
+  logPrefix: "(Blog)"
   port: 3000
 
-  log:   console.log
-  error: console.error
-
   constructor: (options = {}) ->
+    Flannel.init Console: level: "debug" unless Flannel.winston
+    Flannel.shirt this
+    @debug "initializing"
+
     @address = process.env.OPTIK_PRIVATE_IP
     @port    = process.env.PORT or options.port or @port
     @app     = options.app or express()
@@ -48,6 +51,7 @@ class Blog
     moment.locale @Core.config.locale
 
   initMiddleware: ->
+    @debug "loading middleware"
     # method-override must come before any middleware that relies on METHOD
     @app.use override()
 
@@ -80,7 +84,7 @@ class Blog
 
     # uncomment after placing your favicon in /public
     # @app.use favicon path.join __dirname, "public", "favicon.ico"
-    @app.use morgan "dev"
+    @app.use Flannel.morgan " info"
     @app.use compression()
     @app.use bodyParser.json()
     @app.use bodyParser.urlencoded extended: true
@@ -103,6 +107,7 @@ class Blog
     next()
 
   bindRoutes: ->
+    @debug "loading routes"
     @app.use @localMiddleware
     @Routes = (require "./app/controllers/routes").init @app, @Core
 
@@ -133,9 +138,11 @@ class Blog
       else
         throw error
 
-  listening: => @log "listening on #{@server.address().port}"
+  listening: => @info "listening on #{@server.address().port}"
 
   register: (callback) ->
+    @debug "registering with Consul"
+
     consul = new Consul host: process.env.OPTIK_ADMIN_IP
     website =
       name: "nextorig.in-website"
