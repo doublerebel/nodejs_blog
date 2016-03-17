@@ -1,13 +1,13 @@
 http          = require "http"
 path          = require "path"
+
 express       = require "express"
-favicon       = require "serve-favicon"
 morgan        = require "morgan"
 assets        = require "connect-assets"
-compression   = require "compression"
-override      = require "method-override"
-cookieParser  = require "cookie-parser"
 bodyParser    = require "body-parser"
+compression   = require "compression"
+favicon       = require "serve-favicon"
+override      = require "method-override"
 responseTime  = require "response-time"
 session       = require "express-session"
 Consul        = require "consul"
@@ -83,8 +83,7 @@ class Blog
     @app.use morgan "dev"
     @app.use compression()
     @app.use bodyParser.json()
-    @app.use bodyParser.urlencoded extended: false
-    @app.use cookieParser()
+    @app.use bodyParser.urlencoded extended: true
     @app.use express.static path.join __dirname, "../", "public"
 
 
