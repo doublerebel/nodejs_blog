@@ -21,8 +21,8 @@ i18n    = require 'i18n'
 utils   = require './lib/utils'
 
 
-class Blog
-  logPrefix: "(Blog)"
+class FlatWhite
+  logPrefix: "(flat-white)"
   port: 3000
 
   constructor: (options = {}) ->
@@ -169,4 +169,4 @@ class Blog
 
 
 
-module.exports = Blog
+module.exports = FlatWhite
